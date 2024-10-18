@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('validation access') {
             steps {
-                sh 'docker info'
+                sh 'docker --version'
             }
         }
         // stage('Clone') {
