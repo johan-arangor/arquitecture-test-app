@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-
+    agent {
+        dockerfila true
+    }
     stages {
         stage('Clone') {
             steps {
