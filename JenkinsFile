@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        dockerfile true
-    }
+    agent none
     stages {
         stage('Clone') {
             steps {
@@ -15,12 +13,12 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh 'docker run --rm arquitecture-app npm test'
             }
         }
         stage('Start') {
             steps {
-                sh 'npm start'
+                sh 'docker run -d --name arquitecture-app -p 8000:8000 arquitecture-app npm start'
             }
         }
     }
