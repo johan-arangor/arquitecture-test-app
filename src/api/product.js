@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 // Simulación de base de datos
-let products = [];
+let products = [
+    { id: 1, name: "Hola Producto" }
+];
 
 // API para crear un producto
-router.post('/', (req, res) => {
+router.post('/add', (req, res) => {
     const { name } = req.body;
     const newProduct = { id: products.length + 1, name };
     products.push(newProduct);
