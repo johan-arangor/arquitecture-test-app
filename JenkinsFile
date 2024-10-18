@@ -1,26 +1,32 @@
 pipeline {
     agent any
     stages {
+        stage('validation access') {
+            steps {
+                sh 'docker --version'
+                echo 'validation version docker'
+            }
+        }
         stage('Clone') {
             steps {
                 git 'https://github.com/johan-arangor/arquitecture-test-app.git'
             }
         }
-        stage('Build') {
-            steps {
-                sh 'docker build -t arquitecture-app .'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'docker run --rm arquitecture-app npm test'
-            }
-        }
-        stage('Start') {
-            steps {
-                sh 'docker run -d --name arquitecture-app -p 8000:8000 arquitecture-app npm start'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'docker build -t arquitecture-app .'
+        //     }
+        // }
+        // stage('Test') {
+        //     steps {
+        //         sh 'docker run --rm arquitecture-app npm test'
+        //     }
+        // }
+        // stage('Start') {
+        //     steps {
+        //         sh 'docker run -d --name arquitecture-app -p 3000:3000 arquitecture-app npm start'
+        //     }
+        // }
     }
     post {
         success {
