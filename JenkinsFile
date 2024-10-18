@@ -3,15 +3,14 @@ pipeline {
     stages {
         stage('validation access') {
             steps {
-                sh 'docker --version'
-                echo 'validation version docker'
+                sh 'docker info'
             }
         }
-        stage('Clone') {
-            steps {
-                git 'https://github.com/johan-arangor/arquitecture-test-app.git'
-            }
-        }
+        // stage('Clone') {
+        //     steps {
+        //         git 'https://github.com/johan-arangor/arquitecture-test-app.git'
+        //     }
+        // }
         // stage('Build') {
         //     steps {
         //         sh 'docker build -t arquitecture-app .'
